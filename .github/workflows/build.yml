@@ -21,3 +21,9 @@ jobs:
       - name: Build
         run: yarn build
       
+      - name: Deploy to github pages
+        if: github.ref == 'fefs/heads/master'
+        uses: peaceiris/actions-gh-pages
+        with:
+          github_token: ${{ secrets.GITHUB_TIKEN }}
+          publish_dir: ./build
